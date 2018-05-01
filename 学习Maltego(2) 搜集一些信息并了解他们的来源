@@ -1,0 +1,60 @@
+今天,我们来尝试下信息搜集!
+
+在Maltego中,收集个人在互联网上的公开信息被称之为 Transforms(转换) , 转换内置在工具之中 , 被定义为执行特定任务的代码脚本.
+
+那么,让我们来搜集一下Domain信息吧
+1 : 左侧选项栏 Infratructure -> Domain , 将图标拖入到Graph1中
+2 : 双击图标,可以更改域名.在这里,我尝试搜索 njupt.edu.cn 这个域名
+3 : 右键
+	此时你会发现有三个选项卡,他们是
+		All Transforms
+		PATERVA CTAS CE
+		Shodan
+	这些是选择Transforms的信息来源,一般选择All Transforms,其他的需要API KEY
+4 : 左键All Transforms
+	此时你会发现,有很多的选项卡,多到你不知道该如何下手.但是根据我第一章的说明,加上你的基础只是,你应该对下面几个选项有一定理解了,以下就些信息的来源可能比较难以理解,通过互联网可以查到很多信息
+		1 : PGP : PGP的意思是 优良保密协议 ,它是一套用于消息加密,验证应用程序.
+		2 : SOA : SOA是域下一个面向服务的体系结构 ,是一个组建模型
+		3 : SPF : SPF是发信者策略架构 , 是为了防范垃圾邮件而提出来的一种DNS记录类型 , 他是一种TXT类型的记录 ,用于登记某个域名拥有的用来外发邮件的所有IP地址
+		4 : using DB ,字面意思,使用数据库
+		5 : using search Engine ,字面意思,使用搜索引擎
+		6 : From whois info ,从whois信息中查询
+		7 : Quick lookup : 从网站快速查找
+		8 : Find other TIIDs : 找到其他顶级域名
+		9 : Via shadon : 通过Shadon搜索引擎
+		10 : IBM Watson : 这个没查到,不过字面意思应该是从WHOIS服务器中的实体查询
+		11 : Attempt zone transfer : 尝试区域转移 , 这个没查到
+		12 : Bing : 使用微软的必应来查找
+		
+另外,我们还可以收集Website信息,方法同上
+	下面是在查询Website中较难理解的一些信息来源解释
+		1 : Mirror : External links found : 镜像外部链接发现(主要是二级域名和友情外链)
+			这里解释下域名的分级,域名分为顶级域名(一级域名) , 二级域名 , 三级域名.具体来说,域名级数是指一个域名由多少级组成,域名的各个级别被" . "分隔.也就是说,有多少个" . ",就是几级域名.二级及其以上的域名,统称为子域名,不在"注册域名"的范围之内.根据ICANN说明,组织,个人可以申请注册顶级域名.
+			至于外链,外链就是在别的网站导入自己网站的链接,导入链接对于网站优化是一个非常重要的过程.
+		2 : Mirror : Email addresses found : 镜像电子邮件发现
+		3 : Enumerate hostname numerically : 枚举主机域名
+		4 : Query ports : 查询某网站的某个端口
+		5 : Replace with tumbnall : 获得某网站的缩略图
+		
+当你需要通过IP地址搜集信息的时候,可以通过 Infrastructure -> IPV4 address
+	下面是在IP address信息收集时一些较为难理解的来源
+		1 : Blocks delegated to this IP as NS : 确定IP数和反向DNS的域名
+		2 : Using natural boundaries : 显示C段列表,显示IP划分好之后C段内的IP信息
+		3 : Using routing info : 通过路由表来确定一个IP地址的从属
+		
+当你需要收集Person信息时,点击Personal -> person
+	通过以上的知识,你可以很快了能了解到各选项的功能,选择最适合的方法进行信息搜集
+	
+接下来,我们来以 njupt.edu.cn这个域名为例,进行一次具体的侦察活动
+	1 : 首先侦察域名信息,选中Domain,并将网址改为 njupt.edu.cn
+	2 : 接着右键开始搜集信息,其中可以全选,也可以单个选择
+	3 : 然后,你会发现你收集到了一系列Website, DNS,手机号码,邮箱等信息
+	4 : 通过Website : njupt.edu.cn 继续进行信息搜集
+	5 : 通过Website信息收集之后,可以看到该站点的IP地址,DNS,服务器等信息
+	6 : 通过IP,可以反查旁站,DNS,位置等信息
+	7 : 通过邮箱,可以继续查找网站管理员的电话,推特等信息
+	8 : 当你到这一步时,信息基本收集完毕,可以选择不同的形状来查看结果
+至此位置,一次基本的信息侦察基本成型.
+
+通过以上的内容,你是否对Maltego搜集信息的来源有一定了解了呢?
+Maltego搜集信息的范围十分广泛,它可以自动对来自互联网的信息进行搜集,并且将搜集到的信息以一种可视化的界面呈现给使用者,当你将Maltego搭配其他的情报搜集软件共同使用的时候,往往会有出人意料的效果
